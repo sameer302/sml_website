@@ -90,7 +90,7 @@ export default async function PeoplePage() {
         .people-body {
           max-width: 1100px;
           margin: 0 auto;
-          padding: 0 40px 120px;
+          padding: 40px 40px 120px;
         }
 
         /* ── SECTION ── */
@@ -350,20 +350,7 @@ export default async function PeoplePage() {
 
       <main className="people-root">
 
-        {/* ── HERO ── */}
-        <div className="people-hero">
-          <p className="people-hero__label">IIT Bombay · Sensing & Monitoring Lab</p>
-          <h1 className="people-hero__title">
-            The <em>People</em><br />Behind the Work
-          </h1>
-          <div className="people-hero__rule">
-            <div className="people-hero__rule-line" />
-            <div className="people-hero__rule-dot" />
-          </div>
-          <p className="people-hero__sub">
-            Researchers and engineers pushing the boundaries of instrumentation, sensing, and monitoring systems.
-          </p>
-        </div>
+
 
         {/* ── SECTIONS ── */}
         <div className="people-body">

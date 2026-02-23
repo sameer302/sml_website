@@ -8,7 +8,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-br from-indigo-100 via-sky-100 to-teal-100">        <Navbar />
+      <body>
+        <Navbar />
         {children}
       </body>
     </html>
