@@ -1,37 +1,18 @@
-import {client} from '@/sanity/lib/client'
+import { client } from '@/sanity/lib/client'
+import PublicationsClient from './PublicationsClient'
+
+export const metadata = {
+  title: 'Publications | Sensing & Monitoring Lab',
+  description: 'Peer-reviewed journal articles, conference papers and preprints from the Sensing & Monitoring Lab, IIT Bombay.',
+}
 
 export default async function PublicationsPage() {
   const publications = await client.fetch(`
-    *[_type == "publication"] | order(year desc){
-      _id,
-      title,
-      authors,
-      journal,
-      year,
-      link
+    *[_type == "publication"] | order(featured desc, year desc) {
+      _id, title, authors, type, journal, volume, pages,
+      year, link, doi, arxivId, abstract, tags, featured
     }
   `)
 
-  return (
-    <main className="p-10">
-      <h1 className="text-2xl font-bold mb-6">Publications</h1>
-
-      <ul className="space-y-4">
-        {publications.map((p: any) => (
-          <li key={p._id}>
-            <p className="font-medium">{p.title}</p>
-            <p className="text-sm">{p.authors}</p>
-            <p className="text-sm text-gray-600">
-              {p.journal} ({p.year})
-            </p>
-            {p.link && (
-              <a href={p.link} className="text-blue-600 text-sm">
-                View paper
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </main>
-  )
+  return <PublicationsClient publications={publications} />
 }

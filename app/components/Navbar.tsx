@@ -9,7 +9,6 @@ const links = [
   { href: '/people', label: 'People' },
   { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Publications' },
-  { href: '/academics', label: 'Academics' },
   { href: '/contact', label: 'Contact' },
 ]
 

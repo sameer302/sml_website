@@ -1,6 +1,11 @@
 import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 
+export const metadata = {
+  title: "Research | Sensing & Monitoring Lab",
+  description: "Exploring digital health diagnostics, physiological monitoring, and AI-enabled screening systems.",
+}
+
 export default async function ResearchPage() {
   const research = await client.fetch(`
     *[_type == "research"] | order(order asc, _createdAt asc) {

@@ -2,6 +2,11 @@ import { client } from '@/sanity/lib/client'
 import { urlFor } from '@/sanity/lib/image'
 import MemberCard from './MemberCard'
 
+export const metadata = {
+  title: "People | Sensing & Monitoring Lab",
+  description: "Meet the researchers and engineers at the Sensing & Monitoring Lab, IIT Bombay.",
+}
+
 export default async function PeoplePage() {
   const people = await client.fetch(`
     *[_type == "person"]{

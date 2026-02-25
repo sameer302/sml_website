@@ -1,6 +1,15 @@
 import Link from 'next/link'
+import { client } from '@/sanity/lib/client'
+import { urlFor } from '@/sanity/lib/image'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pi = await client.fetch(`
+    *[_type == "person" && role == "PI"][0]{
+      name,
+      photo
+    }
+  `)
+
   const researchAreas = [
     {
       icon: '◎',
@@ -509,9 +518,17 @@ export default function HomePage() {
           {/* PI CARD */}
           <div className="hero__card">
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div className="hero__card-avatar">N</div>
+              {pi?.photo ? (
+                <img
+                  src={urlFor(pi.photo).width(144).height(144).fit('crop').url()}
+                  alt={pi.name}
+                  style={{ width: '72px', height: '72px', borderRadius: '2px', objectFit: 'cover', flexShrink: 0 }}
+                />
+              ) : (
+                <div className="hero__card-avatar">N</div>
+              )}
               <div>
-                <p className="hero__card-name">Prof. Nirmal Punjabi</p>
+                <p className="hero__card-name">{pi?.name ?? 'Prof. Nirmal Punjabi'}</p>
                 <p className="hero__card-role">Principal Investigator</p>
               </div>
             </div>
@@ -522,6 +539,8 @@ export default function HomePage() {
               <a href="mailto:npunjabi@iitb.ac.in">npunjabi@iitb.ac.in</a>
               &ensp;·&ensp;
               <a href="https://www.linkedin.com/in/npunjabi108/" target="_blank" rel="noreferrer">LinkedIn</a>
+              &ensp;·&ensp;
+              <a href="https://scholar.google.com/citations?user=https://scholar.google.com/citations?hl=en&user=86tKGf8AAAAJ" target="_blank" rel="noreferrer">Scholar</a>
             </div>
             <div className="hero__card-stat">
               <div className="hero__card-stat-item">
