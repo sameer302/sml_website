@@ -534,7 +534,7 @@ export default async function HomePage() {
             </div>
             <div className="hero__card-divider" />
             <div className="hero__card-meta">
-              Transit Building, Koita Centre for Digital Health<br />
+              Koita Centre for Digital Health<br />
               IIT Bombay, Mumbai<br /><br />
               <a href="mailto:npunjabi@iitb.ac.in">npunjabi@iitb.ac.in</a>
               &ensp;·&ensp;
